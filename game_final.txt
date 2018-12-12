@@ -1,0 +1,562 @@
+00E0 0200 ;clear screen
+6004 0202 ;controller baris pertama
+610B 0204 ;koordinat y baris pertama
+226C 0206 ;!JUMP ke fungsi welcome 
+6018 0208 ;controller baris kedua
+6213 020A ;koordinat y baris kedua
+2296 020C ;!JUMP ke fungsi to
+22E8 020E ;!JUMPS fungsi intro tambahan
+6008 0210 ;controller sprite lompat1
+6305 0212 ;koordinat y sprite lompat1
+22A2 0214 ;!JUMP ke fungsi lompat
+6008 0216 ;controller sprite lompat2
+630E 0218 ;koordinat y sprite lompat2
+22A2 021A ;!Jump ke fungsi lompat
+6008 021C ;Controller baris keempat
+6416 021E ;Koordinat y untuk baris keempat
+22C6 0220 ;!JUMP ke fungsi asoy
+12FE 0222 ;!JUMP ke fungsi tambahan_2
+
+-------------
+6363 0224 ;huruf W
+6B7F 0226 
+6300 0228 
+-------------
+7E60 022A ;huruf E
+7860 022C 
+7E00 022E 
+-------------
+6060 0230 ;huruf L
+6060 0232 
+7E00 0234 
+-------------
+3E60 0236 ;huruf C
+6060 0238 
+3E00 023A 
+-------------
+3C66 023C ;huruf O
+6666 023E 
+3C00 0240 
+-------------
+637F 0242 ;huruf M
+6B63 0244 
+6300 0246 
+-------------
+7E18 0248 ;huruf T
+1818 024A 
+1800 024C 
+-------------
+6666 024E ;huruf Y
+3C18 0250 
+1800 0252 
+-------------
+7C66 0254 ;huruf P
+7C60 0256 
+6000 0258 
+-------------
+3C66 025A ;huruf A
+7E66 025C 
+6600 025E 
+-------------
+3E60 0260 ;huruf S
+3C06 0262 
+7C00 0264 
+-------------
+1818 0266 ;symbol !
+1818 0268 
+0018 026A 
+----
+;fungsi welcome
+A224 026C ;!(W)elcome
+D015 026E 
+7008 0270 
+A22A 0272 ;!w(E)lcome
+D015 0274 
+7008 0276 
+A230 0278 ;!we(L)come
+D015 027A 
+7008 027C 
+A236 027E ;!wel(C)ome
+D015 0280 
+7008 0282 
+A23C 0284 ;!welc(O)me
+D015 0286 
+7008 0288 
+A242 028A ;!welco(M)e
+D016 028C 
+7008 028E 
+A22A 0290 ;!welcom(E)
+D015 0292 
+00EE 0294 
+
+----
+;fungsi to
+A248 0296 ;!(T)o
+D025 0298 
+7008 029A 
+A23C 029C ;!t(O)
+D025 029E 
+00EE 02A0 
+
+----
+;fungsi lompat
+A230 02A2 ;!(L)ompat
+D035 02A4 
+7008 02A6 
+A23C 02A8 ;!l(O)mpat
+D036 02AA 
+7008 02AC 
+A242 02AE ;!lo(M)pat
+D036 02B0 
+7008 02B2 
+A254 02B4 ;!lom(P)at
+D036 02B6 
+7008 02B8 
+A25A 02BA ;!lomp(A)t
+D036 02BC 
+7008 02BE 
+A248 02C0 ;!lompa(T)
+D036 02C2 
+00EE 02C4 
+
+----
+;fungsi asoy
+A25A 02C6 ;!(A)soy
+D046 02C8 
+7008 02CA 
+A260 02CC ;!a(S)oy
+D046 02CE 
+7008 02D0 
+A23C 02D2 ;!as(O)y
+D046 02D4 
+7008 02D6 
+A24E 02D8 ;!aso(Y)
+D046 02DA 
+7008 02DC 
+A266 02DE ;symbol !
+D046 02E0 
+7008 02E2 
+D046 02E4 
+00EE 02E6 
+
+----
+;fungsi intro tambahan
+6B4F 02E8 ;delay
+22F4 02EA ;fungsi timer
+00E0 02EC ;clear screen
+6B05 02EE ;delay
+22F4 02F0 ;fungsi timer
+00EE 02F2 
+
+----
+;fungsi timer
+FB15 02F4 ;set timer dari VB
+FB07 02F6 ;ngambil angka timer masukin ke VB
+3B00 02F8 ;Skip next, if VE == 00
+12F6 02FA ;jump ke FB07
+00EE 02FC ;return from a subroutine
+
+----
+;fungsi intro tambahan_2
+6B4F 02FE ;delay
+22F4 0300 ;!JUMPS fungsi timer
+00E0 0302 
+6B05 0304 ;delay
+22F4 0306 ;!JUMPS fungsi timer
+130A 0308 ;!JUMP ke pra games
+
+----
+;pra games
+00E0 030A ;Clear screen
+6001 030C ;X (kanan)
+6101 030E ;Y (bawah)
+A33A 0310 ;!LOAD S score
+D014 0312 
+7105 0314 
+A33E 0316 ;!LOAD C score
+D014 0318 
+7105 031A 
+A342 031C ;!LOAD 0 score
+D014 031E 
+7105 0320 
+A346 0322 ;!LOAD R score
+D014 0324 
+7105 0326 
+A34A 0328 ;!LOAD E score
+D014 032A 
+7105 032C ;koordinat y score puluhan = 1A 
+FA29 032E ;koordinat x score puluhan = 1
+D015 0330 
+7005 0332 
+F929 0334 ;koordinat y score satuan = 1A
+D015 0336 ;koordinat x score satuan = 6
+1356 0338 ;!JUMP ke next section
+------------ 
+F080 033A ;huruf S
+F070 033C 
+------------ 
+F080 033E ;huruf C
+80F0 0340 
+------------ 
+F090 0342 ;huruf O
+90F0 0344 
+------------ 
+F090 0346 ;huruf R
+F0A0 0348 
+------------ 
+F0E0 034A ;huruf E
+80F0 034C 
+----
+;reset score
+6900 034E ;reset register V9
+6A00 0350 ;reset register VA
+00EE 0352 ;return ...
+7000 0354 ;not used
+----
+1358 0356 ;!JUMP ke Game Utama
+
+----
+;Game utama
+2528 0358 ;
+7000 035A ;
+7000 035C ;
+6F3C 035E ;VF == 3C
+FF18 0360 ;set sound timer
+6E01 0362 ;set VE awal-awal agar boleh lompat
+241C 0364 ;!JUMP ke fungsi generate jalanan
+6015 0366 ;koordinat karakter x
+611A 0368 ;koordinat karakter y
+6207 036A ;save key value 7 (A keyboard) di register v2
+6309 036C ;save key value 9 (D keyboard) di register v3
+7000 036E ;save key value 5 (W keyboard) di register v4
+A3A8 0370 ;!LOAD address karakter utama
+D016 0372 ;draw 
+6B02 0374 ;delay
+22F4 0376 ;!JUMP fungsi timer
+D016 0378 ;redraw
+E3A1 037A ;keypress
+23B2 037C ;!JUMP ke fungsi geser kanan
+4033 037E ;if fungsi mentok kanan
+23B8 0380 ;!JUMP ke fungsi mentok kanan
+E2A1 0382 ;keypress
+23BE 0384 ;!JUMP ke fungsi geser kiri
+4010 0386 ;if V0 = 10, masuk ke fungsi mentok kiri
+23C4 0388 ;!JUMP ke fungsi mentok kiri
+7000 038A ; 
+7000 038C ;
+41FF 038E ;if fungsi mentok atas
+23F4 0390 ;!JUMP ke fungsi mentok atas
+3E00 0392 ;;skip next, if VE == 00
+24C6 0394 ;!JUMP ke kondisi lompat
+3E01 0396 ; skip next, if VE == 01
+24D4 0398 ;!JUMP ke kondisi turun
+4120 039A ;if mentok bawah
+234E 039C ;!JUMPS ke reset score
+4120 039E ;
+130A 03A0 ;!JUMP ke kondisi game over
+7000 03A2 ;
+7000 03A4 ;
+1370 03A6 ;!JUMP ke LOAD sprite karakter utama
+
+----
+;sprite karakter utama
+F0F0 03A8 
+60F0 03AA 
+6060 03AC 
+0000 03AE 
+0000 03B0 
+
+----
+;fungsi geser kanan
+7000 03B2 
+7005 03B4 ;Set panjang geser nya
+00EE 03B6 ;jump balik
+
+----
+;fungsi mentok kanan
+7000 03B8 
+602E 03BA ;
+00EE 03BC ;jump balik
+
+----
+;fungsi geser kiri
+7000 03BE 
+70FB 03C0 ;Set panjang gesernya
+00EE 03C2 ;jump balik
+
+----
+;fungsi mentok kiri
+7000 03C4 ;buat space
+6015 03C6 ;
+00EE 03C8 ;jump balik
+
+----
+;sprite karakter lompat
+F0F0 03CA 
+60F0 03CC 
+6090 03CE 
+0000 03D0 
+0000 03D2 
+
+----
+;fungsi lompat
+7000 03D4 ;dump
+6B00 03D6 ;set delay
+22F4 03D8 ;!JUMP fungsi timer
+7000 03DA ;dump
+---------
+;fungsi animasi lompat
+7000 03DC ;dump
+71FF 03DE ;register 1 tambah FF. (V1 - 1)
+41FF 03E0 ;if
+13F4 03E2 ;!JUMP ke fungsi mentok atas
+A3CA 03E4 ;!STORE sprite karakter lompat
+D016 03E6 ;draw
+6B03 03E8 ;delay
+22F4 03EA ;!JUMP fungsi timer
+D016 03EC ;draw
+7C01 03EE ;update register C
+7000 03F0 ;dump
+---------
+00EE 03F2 ;return
+
+----
+;fungsi mentok atas
+6C00 03F4 ;reset VC
+611A 03F6 
+24BE 03F8 ;!JUMP ke fungsi redraw jalanan
+241E 03FA ;!JUMP ke fungsi generate jalanan 
+2408 03FC ;!JUMP ke fungsi edit score
+2508 03FE ;!JUMP ke fungsi pengaturan score
+7000 0400 
+7000 0402 
+2408 0404 
+00EE 0406 
+
+----
+;fungsi edit score
+6B01 0408 ;koordinat x score puluhan
+6F1A 040A ;koordinat y score puluhan
+FA29 040C 
+DBF5 040E 
+6B06 0410 ;koordinat x score satuan
+6F1A 0412 ;koordinat y score satuan
+F929 0414 
+DBF5 0416 
+7000 0418 
+00EE 041A 
+
+----
+;sprite jalanan
+F800 041C 
+
+----
+;fungsi generate jalanan
+A41C 041E ;!LOAD sprite jalanan
+6816 0420 ;koordinat y jalanan_a ;register v8
+660C 0422 ;koordinat y jalanan_b ;register V6
+CD0F 0424 ;Tes random 1
+4D01 0426 ;skip nextline jika VD != 1
+145E 0428 ;!JUMP ke case 1
+4D02 042A ;skip nextline jika VD != 2 
+1466 042C ;!JUMP ke case 2
+4D03 042E ;skip nextline jika VD != 3 
+146E 0430 ;!JUMP ke case 3
+4D04 0432 ;skip nextline jika VD != 4 
+1476 0434 ;!JUMP ke case 4
+4D05 0436 ;skip nextline jika VD != 5 
+147E 0438 ;!JUMP ke case 5
+4D06 043A ;skip nextline jika VD != 6 
+1486 043C ;!JUMP ke case 6
+1424 043E ;!JUMP ke Tes Random 1
+CD0F 0440 ;Tes random 2
+4D01 0442 ;skip nextline jika VD != 1
+148E 0444 ;!JUMP ke case 1b
+4D02 0446 ;skip nextline jika VD != 2 
+1496 0448 ;!JUMP ke case 2b
+4D03 044A ;skip nextline jika VD != 3 
+149E 044C ;!JUMP ke case 3b
+4D04 044E ;skip nextline jika VD != 4
+14A6 0450 ;!JUMP ke case 4b
+4D05 0452 ;skip nextline jika VD != 5
+14AE 0454 ;!JUMP ke case 5b
+4D06 0456 ;skip nextline jika VD != 6
+14B6 0458 ;!JUMP ke case 6b
+1440 045A ;!JUMP ke Tes Random 2
+00EE 045C ;end fungsi generate jalanan
+
+----
+;fungsi case 1 
+6715 045E ;koordinat jalanan X ;register v7
+D782 0460 ;draw
+7000 0462 ;redraw
+1440 0464 ;!JUMP ke tes random2
+
+;fungsi case 2
+671A 0466 ;koordinat jalanan X ;register v7
+D782 0468 ;draw
+7000 046A ;redraw
+1440 046C ;!JUMP ke tes random2
+
+;fungsi case 3 
+671F 046E ;koordinat jalanan X ;register v7
+D782 0470 ;draw
+7000 0472 ;redraw
+1440 0474 ;!JUMP ke tes random2
+
+;fungsi case 4 
+6724 0476 ;koordinat jalanan X ;register v7
+D782 0478 ;draw
+7000 047A ;redraw
+1440 047C ;!JUMP ke tes random2
+
+;fungsi case 5 
+6729 047E ;koordinat jalanan X ;register v7
+D782 0480 ;draw
+7000 0482 ;redraw
+1440 0484 ;!JUMP ke tes random2
+
+;fungsi case 6 
+672E 0486 ;koordinat jalanan X ;register v7
+D782 0488 ;draw
+7000 048A ;redraw
+1440 048C ;!JUMP ke tes random2
+
+----
+;fungsi case 1b
+6515 048E ;koordinat x jalanan_b ;register V5
+D562 0490 ;draw
+7000 0492 ;redraw
+145C 0494 ;!JUMP ke end fungs generate jalanan
+
+----
+;fungsi case 2b
+651A 0496 ;koordinat x jalanan_b ;register V5
+D562 0498 ;draw
+7000 049A ;redraw
+145C 049C ;!JUMP ke end fungs generate jalanan
+
+----
+;fungsi case 3b
+651F 049E ;koordinat x jalanan_b ;register V5
+D562 04A0 ;draw
+7000 04A2 ;redraw
+145C 04A4 ;!JUMP ke end fungs generate jalanan
+
+----
+;fungsi case 4b
+6524 04A6 ;koordinat x jalanan_b ;register V5
+D562 04A8 ;draw
+7000 04AA ;redraw
+145C 04AC ;!JUMP ke end fungs generate jalanan
+
+----
+;fungsi case 5b
+6529 04AE ;koordinat x jalanan_b ;register V5
+D562 04B0 ;draw
+7000 04B2 ;redraw
+145C 04B4 ;!JUMP ke end fungs generate jalanan
+
+----
+;fungsi case 6b
+652E 04B6 ;koordinat x jalanan_b ;register V5
+D562 04B8 ;draw
+7000 04BA ;redraw
+145C 04BC ;!JUMP ke end fungs generate jalanan
+
+----
+;fungsi redraw jalanan
+A41C 04BE ;LOAD sprite jalanan
+D782 04C0 
+D562 04C2 
+00EE 04C4 
+
+----
+;fungsi kondisi lompat
+3C0D 04C6 ;skip next, if VC == ... (CONTROLLER LOMPAT)
+23DC 04C8 ;!JUMP ke fungsi animasi lompat
+4C0D 04CA ;skip next, if VC != ..., next if VC == ...
+6E00 04CC 
+4C0D 04CE ;skip next, if VC != ...
+6C00 04D0 
+00EE 04D2 
+
+----
+;fungsi kondisi turun
+6B01 04D4 ;delay
+22F4 04D6 ;!JUMP fungsi timer
+7101 04D8 ;panjang turun
+9070 04DA ;skip next, if V0 != V7
+24E4 04DC ;!JUMP kondisi kedua
+9050 04DE ;skip next, if V0 != V5
+24F6 04E0 ;!JUMP kondisi kedua_b
+00EE 04E2 
+
+----
+;fungsi cek kondisi kedua
+8B10 04E4 ; VB = V1
+8B85 04E6 ; VB - V8
+4BFB 04E8 ; skip next, if VB != FB
+6E01 04EA ; VE = 01, karakter boleh lompat
+4BFB 04EC ; skip next, if VB != FB
+7F05 04EE ; VF += 05, sound
+4BFB 04F0 ; skip next, if VB != FB
+FF18 04F2 ; set sound timer = VF
+00EE 04F4 ; return from a subroutine
+
+----
+;fungsi cek kondisi kedua_b
+8B10 04F6 ; VB = V1
+8B65 04F8 ; VB - V6
+4BFB 04FA ; skip next, if VB != FB
+6E01 04FC ; VE = 01, karakter boleh lompat
+4BFB 04FE ;
+7F05 0500 ; VF += 05, sound
+4BFB 0502 ;
+FF18 0504 ;
+00EE 0506 ; return from a subroutine
+
+----
+;fungsi pengaturan score
+7901 0508 ; V9 += 1
+490A 050A ; skip next, if V9 != 0A
+7A01 050C ; VA += 1
+490A 050E ; skip next, if V9 != 0A 
+6900 0510 ; V9 == 0 (reset VA)
+4A0A 0512 ; skip next, if VA != 0A
+7000 0514 ; (complete game) ni belum sempet
+4A0A 0516 ; skip next, if VA != 0A
+6900 0518 ; V9 == 0 (reset V9)
+4A0A 051A ; skip next, if VA != 0A
+6A00 051C ; VA == 0 (reset VA)
+00EE 051E ; return from a subroutine
+
+----
+;sprite background
+8040 0520 
+8040 0522 
+8040 0524 
+8040 0526 
+
+----
+;fungsi background
+A520 0528 ; !STORE sprite background
+6B10 052A ;
+6400 052C ;
+DB48 052E ;
+7408 0530 
+DB48 0532 
+7408 0534 
+DB48 0536 
+7408 0538 
+DB48 053A 
+6B35 053C ; controller
+6400 053E 
+DB48 0540 
+7408 0542 
+DB48 0544 
+7408 0546 
+DB48 0548 
+7408 054A 
+DB48 054C 
+00EE 054E
